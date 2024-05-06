@@ -1,7 +1,11 @@
 <script>
 import axios from "axios";
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
+  components: {
+    AppHeader,
+  },
   data() {
     return {
       cardsArray: []
@@ -10,7 +14,7 @@ export default {
   created() {
     axios.get("https://rickandmortyapi.com/api/character", {
 
-    }).then(resp => {
+    }).then((resp) => {
       console.log(resp);
       this.cardsArray = resp.data.results;
     });
@@ -18,6 +22,6 @@ export default {
 };
 </script>
 <template>
-  <h1>Rick And Morty App</h1>
+  <AppHeader />
 </template>
 <style lang="scss"></style>

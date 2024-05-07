@@ -21,7 +21,7 @@ export default {
         </select>
       </div>
 
-      <!-- <p>Mostrati {{ cardsArray[0].length }}elementi</p> -->
+      <!-- <p>Mostrati {{ cardsArray.length }}elementi</p> -->
     </div>
   </div>
 </template>

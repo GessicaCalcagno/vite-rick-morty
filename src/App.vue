@@ -30,9 +30,18 @@ export default {
     getCards() {
       this.isLoading = true;
 
-      console.log("Get cards");
+      // Costuriamo i parametri per la chiamata axios
+      const paramsObj = {};
+
+      if (this.store.selectedStatus !== "All") {
+        paramsObj.status = this.store.selectedStatus;
+      }
+
+      console.log("Get cards", this.store.selectedStatus);
       axios
-        .get("https://rickandmortyapi.com/api/character", {})
+        .get("https://rickandmortyapi.com/api/character", {
+          params: paramsObj,
+        })
         .then((resp) => {
           this.cardsArray = resp.data.results;
           this.isLoading = false;

@@ -1,7 +1,5 @@
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <template>
@@ -9,3 +7,4 @@ export default {
 </template>
 
 <style scoped lang="scss"></style>
+

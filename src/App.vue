@@ -13,18 +13,13 @@ export default {
   },
   data() {
     return {
+      //store che punta su store
       store,
-      cardsArray: [],
       isLoading: false,
     };
   },
   created() {
-    this.isLoading = true;
-    axios.get("https://rickandmortyapi.com/api/character", {}).then((resp) => {
-      console.log(resp);
-      this.cardsArray = resp.data.results;
-      this.isLoading = false;
-    });
+    this.getCards();
   },
   methods: {
     getCards() {
@@ -43,7 +38,8 @@ export default {
           params: paramsObj,
         })
         .then((resp) => {
-          this.cardsArray = resp.data.results;
+          //salvo i dati all'interno della variabile store in store.js dell'array inizializzato vuoto cardList
+          this.store.cardList = resp.data.results;
           this.isLoading = false;
         });
     },
@@ -56,7 +52,7 @@ export default {
   <div v-if="isLoading">
     <h1 class="text-center">is loading ...</h1>
   </div>
-  <CardList v-else :cardsArray="cardsArray" />
+  <CardList v-else />
 </template>
 
 <style lang="scss">
